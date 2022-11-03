@@ -7,27 +7,22 @@
 
 import UIKit
 
-/*
- To do list
- 1. Add slider
- 2. Add Hit button
- 3. Receive value changed events from the slider
- 4. Add Reset button
- 5. Add labels preseting information
- 6. Generate the random number
- 7. Compare the random numbr with input number
- 8. Show alerts
- 9. Implements reset features
- 10. Add credit view
- */
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var sliderValueLabel: UILabel!
+    @IBOutlet weak var tryCountLabel: UILabel!
+    @IBOutlet weak var minimumValueLable: UILabel!
+    @IBOutlet weak var maximumValueLabel: UILabel!
+    
+    var randomValue: Int = 0
+    var tryCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // slider 포인터 이미지 변경
+        slider.setThumbImage(UIImage(imageLiteralResourceName: "slider_thumb.png"), for: .normal)
+        reset()
     }
 
     @IBAction func sliderValueChanged(_ sender: UISlider) {
@@ -40,7 +35,23 @@ class ViewController: UIViewController {
 
     @IBAction func touchUpResetButton(_ sender: UIButton) {
         print("touch up reset button")
+        reset()
+    }
+    
+    func reset() {
+        //print("reset")
+        randomValue = Int.random(in: 0...30)
+        print("randomValue : \(randomValue)")
+        // 초기화
+        tryCount = 0
+        tryCountLabel.text = "0 / 5"
+        slider.minimumValue = 0
+        slider.maximumValue = 30
         slider.value = 15
+        minimumValueLable.text = "0"
+        maximumValueLabel.text = "30"
+        sliderValueLabel.text = "15"
+        
     }
 }
 
