@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // slider 포인터 이미지 변경
         slider.setThumbImage(UIImage(imageLiteralResourceName: "slider_thumb.png"), for: .normal)
-        //reset()
+        reset()
     }
     // slider 값 변경 시 처리
     @IBAction func sliderValueChanged(_ sender: UISlider) {
